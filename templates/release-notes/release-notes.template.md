@@ -1,7 +1,7 @@
 # Release Notes
 
-## Purpose
-*Communicate changes, new features, and important information for each release*
+## Overview
+{Provide a brief introduction to the release, highlighting the main goals and improvements. This section should set the context for the detailed notes that follow.}
 
 ## Structure
 # [Module] Release Notes - Version [X.Y.Z]

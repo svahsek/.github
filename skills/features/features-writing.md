@@ -293,7 +293,7 @@ Basic Feature → Detailed Capabilities → Technical Implementation → Advance
 - **[Capability 1]**: [What it does] and [why it benefits users]
 - **[Capability 2]**: [What it does] and [why it benefits users]
 - **[Capability 3]**: [What it does] and [why it benefits users]
-```
+
 
 ### Section Template
 
