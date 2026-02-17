@@ -1,3 +1,11 @@
+---
+title: Overview
+description: Complete overview of the product, architecture, deployment options, and configuration guide
+---
+
+# Overview
+Overview page template that provides a comprehensive introduction to the product, its architecture, deployment options, and configuration guide. This template is designed to give users a clear understanding of the product's capabilities and how to get started with it.
+
 > ❗ **Important!** Before you proceed, you should be aware of the relevant standards. Please read the following before proceeding:
 >
 >   * [{STANDARD_1_NAME}]({STANDARD_1_URL})
