@@ -1,40 +1,7 @@
 # Release Notes Template
 
-## Purpose
-*Communicate changes, new features, and important information for each release to developers, integrators, operators, and decision-makers.*
+## Overview
 
-## Usage Instructions
-
-**This template provides the structure for release notes.** When creating actual release notes:
-1. Copy the content structure below (starting from "Release Metadata")
-2. Replace all `[placeholders]` with actual content
-3. Remove sections that don't apply to your release
-4. Keep descriptions concise but informative (2-3 sentences max per item)
-5. Always link to detailed documentation for complex features
-
----
-
-## Content Structure for Actual Release Notes
-
-Copy everything below this line for your release notes document:
-
----
-
-# [Module Name] Release Notes - Version [X.Y.Z]
-
-## Release Metadata
-
-| **Field** | **Value** |
-|-----------|-----------|
-| **Release Version** | [X.Y.Z] |
-| **Release Date** | [YYYY-MM-DD] |
-| **Release Type** | [Major / Minor / Patch / Hotfix] |
-| **Status** | [Stable / Beta / Release Candidate / Alpha] |
-| **Target Audience** | [Developers / Integrators / Operators / End Users] |
-| **Supported MOSIP Version** | [e.g., 1.2.0.1 and above] |
-| **Previous Version** | [X.Y.Z-1] |
-
----
 
 ## Release Summary
 
