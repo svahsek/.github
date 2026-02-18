@@ -20,8 +20,6 @@ Also here is the note taken from the transcript which the google meet transcribe
 Having gone through this enlist the key points that needs to be said upfront which removed ambiguity.
 
 
-
-
 ---
 You know that the MOSIP-CRVS documentation is already here
 However the feedback from the stakeholder says the https://docs.mosip.io/1.2.0/interoperability/integrations/mosip-crvs is ambiguaos and not comprehensive enough

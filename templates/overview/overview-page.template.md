@@ -31,6 +31,10 @@ In particular, {PRODUCT_NAME} focuses on {SPECIFIC_ROLE} and provides the follow
 
 To know more about features available in {PRODUCT_NAME} please refer to [this documentation]({FEATURES_DOCUMENTATION_LINK}).
 
+## Try It Out
+
+{[Module Collab Guide]({MODULE_COLLAB_GUIDE_LINK})} helps you with exploring {Module} in our [Sandbox Collab Environment](https://collab.mosip.net/)
+
 ## Architecture
 
 {BRIEF_ARCHITECTURE_DESCRIPTION}. It interacts with {EXTERNAL_SYSTEMS} via {INTERACTION_METHOD}.
