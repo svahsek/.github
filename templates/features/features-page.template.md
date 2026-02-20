@@ -1,3 +1,55 @@
+---
+title: Features Page Writing Guidelines
+description: Comprehensive guidelines for writing professional, user-centric features pages for MOSIP modules
+author: MOSIP Documentation Team
+version: 1.0
+last_updated: 2024
+document_type: template
+target_audience:
+  - technical_writers
+  - product_managers
+  - developers
+  - documentation_leads
+purpose: Standardize features documentation
+key_principles:
+  - user_centric_approach
+  - progressive_information_architecture
+  - professional_standards
+content_guidelines:
+  reading_level: grade_8_10
+  tone: professional_accessible
+  language: active_voice_benefit_focused
+  structure: user_journey_organized
+metadata_tags:
+  - documentation
+  - guidelines
+  - features
+  - templates
+  - mosip
+  - user_documentation
+ai_instructions:
+  - lead_with_user_benefits
+  - organize_by_user_journey_not_technical_architecture
+  - use_action_oriented_language
+  - include_specific_measurable_benefits
+  - provide_cross_references_to_implementation_guides
+  - avoid_generic_or_technical_only_descriptions
+  - maintain_consistent_terminology
+  - include_multi_stakeholder_perspective
+quality_metrics:
+  - comprehension_time_under_30_seconds
+  - consistent_formatting
+  - functional_cross_references
+  - accessibility_compliant
+  - mobile_responsive
+review_checklist:
+  - user_benefits_clear
+  - logical_organization
+  - accessible_language
+  - links_functional
+  - accurate_content
+---
+
 # Features Page Writing Guidelines
 ## Overview
 

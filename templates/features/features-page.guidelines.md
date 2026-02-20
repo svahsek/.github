@@ -1,4 +1,37 @@
-# Features Page Writing Guidelines
+---
+title: Features and Features Page Writing Guidelines
+description: Comprehensive guidelines for writing professional, user-centric features pages for MOSIP modules, ensuring consistency, clarity, and industry-standard quality across documentation.
+keywords:
+  - features documentation
+  - writing guidelines
+  - markdown standards
+  - user-centric content
+  - documentation best practices
+  - technical writing
+  - MOSIP modules
+audience:
+  - technical writers
+  - documentation specialists
+  - product managers
+  - module developers
+content_type: guidelines
+document_type: style-guide
+version: 1.0
+last_updated: 2024
+language: en
+applies_to:
+  - Veriafiable Credentialing Stack
+key_topics:
+  - feature description standards
+  - user journey organization
+  - cross-reference strategy
+  - content quality checklist
+  - benefit-first writing
+  - professional documentation standards
+---
+
+
+# Features and Features Page Writing Guidelines
 ## Overview
 
 This guide provides comprehensive guidelines for writing professional, user-centric features pages for MOSIP modules. These guidelines ensure consistency, clarity, and industry-standard quality across all MOSIP documentation.
