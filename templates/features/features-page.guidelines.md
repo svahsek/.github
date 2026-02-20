@@ -122,7 +122,7 @@ This guide provides comprehensive guidelines for writing professional, user-cent
 
 ### User Journey Organization**
 
-Login → Data Entry → Document Upload → Processing → Confirmation → Completion
+As per the discovery of content from the #codebase for the module
 
 
 ### Stakeholder-Based Organization**
@@ -293,7 +293,7 @@ Basic Feature → Detailed Capabilities → Technical Implementation → Advance
 - **[Capability 1]**: [What it does] and [why it benefits users]
 - **[Capability 2]**: [What it does] and [why it benefits users]
 - **[Capability 3]**: [What it does] and [why it benefits users]
-```
+
 
 ### Section Template
 

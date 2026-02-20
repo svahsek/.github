@@ -4,7 +4,7 @@ title: [Features]
 description: [Writes software features page contet]
 purpose: [Writes software features page contet]
 version: 1.0.0
-audience: [Claude Sonnet 4.5, GPT-5.2, GPT-4o, GPT-5.1]
+audience: [Users, Business Analysts, Claude Sonnet 4.5, GPT-5.2, GPT-4o, GPT-5.1]
 created: 2026-0125
 lastUpdated: 2026-0125
 tags: [tag1, tag2, tag3]
