@@ -19,7 +19,6 @@ PLACEHOLDERS LEGEND:
 - {PRODUCT_NAME}: e.g., "Inji Mobile Wallet", "Inji Web Wallet", "Inji Verify"
 - {TARGET_USERS}: e.g., "end users", "verifiers", "holders"
 - {CORE_FUNCTIONALITY}: Brief description of what the product does
-- Use ✅ for supported features and ❌ for unsupported/planned features
 
 STYLE GUIDELINES:
 - Keep descriptions concise and action-oriented
@@ -42,8 +41,6 @@ More
 {Key Benefits}
 
 
-
-
 ## Quick Start Section
 
 ## Quick Start
@@ -60,14 +57,14 @@ More
 ### For End Users
 {User guide}
 
-## Value Proposition Section
+## Value Proposition
 {Value Proposition - 1}
 {Value Proposition - 1}
 {Value Proposition - 1}
 {Value Proposition - 1}
 
 
-## How It Work
+## How It Works
 
 ### Workflow Diagram
 {Architecture - Description and Diagram -  Mermaid}

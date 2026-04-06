@@ -43,7 +43,7 @@
 ### RULE-003: Release Date Format
 - **Severity**: ERROR
 - **Pattern**: Must be `DD Month YYYY` or `D Month YYYY` format
-  - Valid: `3rd May 2024`, `16 February 2026`, `1 January 2025`
+  - Valid: `3rd May, 2026`
   - Invalid: `2024-05-03`, `May 3 2024`, `05/03/2024`, `TBD`, missing date
 
 ---
