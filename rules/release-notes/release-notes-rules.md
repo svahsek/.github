@@ -1,3 +1,28 @@
+---
+type: rules
+id: release-notes
+title: Release Notes Validation Rules
+domain: documentation
+scope: release-notes
+purpose: Validate release notes for structure, completeness, and quality
+version: 1.0.0
+status: active
+owner: documentation
+audience: agents
+format: markdown-rules
+appliesTo:
+
+CHANGELOG.md
+release-notes.md
+docs/releases/**/*.md
+validationMode: advisory
+ruleIdPrefix: RULE
+tags:
+release-notes
+validation
+documentation-quality
+---
+
 # Release Notes Validation Rules
 
 **Purpose**: This document defines validation rules for release notes. AI agents should validate against these rules and report violations categorized by severity.
