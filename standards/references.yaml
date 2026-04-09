@@ -162,6 +162,12 @@ documentation_standards:
   
   internal_standards:
     description: "Custom standards defined in this repository"
+    content_registry:
+      path: ".github/standards/content-types.yaml"
+      description: "Registry of supported content types and their public entrypoints"
+    release_notes_manifest:
+      path: ".github/standards/content-types/release-notes.yaml"
+      description: "Consumer-facing manifest for release notes schema, rendering rules, and examples"
     
     skills:
       path: ".github/skills/"
@@ -223,10 +229,15 @@ agent_usage_guide: |
 # ============================================================================
 
 metadata:
-  version: "1.2.3"
-  last_updated: "2026-04-05"
+  version: "1.2.4"
+  last_updated: "2026-04-09"
   url_verification: "2026-04-05 - All external links tested and verified working"
   changes: |
+    v1.2.4 (2026-04-09):
+      - Added .github/standards/content-types.yaml as a central content-type registry
+      - Added .github/standards/content-types/release-notes.yaml as the consumer-facing release-notes manifest
+      - Exposed release-notes schema, rendering rules, examples, and skill as stable internal entrypoints
+
     v1.2.3 (2026-04-05):
       - Replaced vague CNCF documentation portal with concrete Kubernetes docs (https://kubernetes.io/docs/)
       - Kubernetes is flagship CNCF project with authoritative, actionable documentation

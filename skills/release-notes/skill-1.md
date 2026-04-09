@@ -20,6 +20,57 @@ argument-hint: 'Provide the release version, source inputs, and output target'
 - Rendering rules: [../../templates/release-notes/release-notes-rendering.yaml](../../templates/release-notes/release-notes-rendering.yaml)
 - Quick reference: [../../templates/release-notes/agent-quick-reference.md](../../templates/release-notes/agent-quick-reference.md)
 
+## Repository Inputs and Extraction
+
+### Step 1 — Gather git data
+
+Run both of these. They are the raw material for AI analysis.
+
+```bash
+# 1. Full commit log with metadata
+git log <base_tag>..<release_branch> \
+  --pretty=format:"COMMIT|%H|%s|%an|%ad" \
+  --date=short
+
+# 2. Stat-level diff (files changed, no full content yet)
+git diff --stat <base_tag>..<release_branch>
+
+# 3. Full diff (for deep analysis — can be large)
+git diff <base_tag>..<release_branch>
+```
+
+> ⚠️ If the full diff exceeds ~4000 lines, use file-by-file diffing instead:
+>
+> ```bash
+> # Get list of changed files
+> git diff --name-only <base_tag>..<release_branch>
+>
+> # Then diff each file individually, prioritizing non-test, non-generated files
+> git diff <base_tag>..<release_branch> -- <file>
+> ```
+
+---
+
+## Step 2 — Analyze and classify changes
+
+With the commit messages and diff in hand, classify every meaningful change into one of:
+
+| Category | What belongs here |
+|---|---|
+| **✨ New Features** | New capabilities, endpoints, UI, commands, config options |
+| **🐛 Bug Fixes** | Defect corrections, crash fixes, incorrect behavior resolved |
+| **💥 Breaking Changes** | Removed/renamed APIs, changed signatures, config format changes, dropped support |
+| **🔄 Migration Guide** | Step-by-step instructions required due to breaking changes |
+| **🔧 Internal / Chores** | Refactors, dependency bumps, CI changes (include briefly or omit) |
+
+**Classification rules:**
+- Use the diff to understand *what* changed, use the commit message to understand *why*
+- Merge commits and version-bump commits should be skipped
+- If a commit is ambiguous, lean on the diff to classify it
+- Breaking changes **must** have a corresponding migration guide entry
+- Be specific: "Added `--dry-run` flag to `deploy` command" not "Added a flag"
+
+
 ## Procedure
 
 1. Read the release-notes manifest to discover the current schema, rendering rules, and examples.

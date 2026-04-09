@@ -9,7 +9,7 @@ created: 2026-0125
 lastUpdated: 2026-0125
 tags: [tag1, tag2, tag3]
 relatedSkills: []
-relatedTemplates: [release-notes.template.md]
+relatedTemplates: [release-notes-template.md]
 ---
 
 # [Feature Page Content Writer]
@@ -24,12 +24,12 @@ relatedTemplates: [release-notes.template.md]
 ## Instructions
 [Release Notes Template]
 
-- Release Notes Template - [.github/templates/release-notes/release-notes.template.md]
+- Release Notes Template - [.github/templates/release-notes/release-notes-template.md]
 
 ## Output Format
 [Markdown format with appropriate headings, subheadings, bullet points, and tables as needed.]
 
-- Template to be used to provide the structure: [.github/templates/release-notes/release-notes.template.md]
+- Template to be used to provide the structure: [.github/templates/release-notes/release-notes-template.md]
 
 
 ## Constraints
@@ -37,7 +37,7 @@ N/A
 
 ## Quality Criteria
 
-- Guidelines in - [.github/templates/release-notes/release-notes.template.md]
+- Guidelines in - [.github/templates/release-notes/release-notes-template.md]
 
 ## Examples
 
@@ -51,7 +51,7 @@ Not Available - [Latest Release Notes]
 
 ## Template
 
-Template that contains the structure of the 'Release Notes' that you will process from crude-content and as per guidelines instructed to you as per [.github/templates/release-notes/release-notes.template.md] and then put the revised writeup in [.github/output.md].
+Template that contains the structure of the 'Release Notes' that you will process from crude-content and as per guidelines instructed to you as per [.github/templates/release-notes/release-notes-template.md] and then put the revised writeup in [.github/output.md].
 
 [.github/templates/features.template.md]
 

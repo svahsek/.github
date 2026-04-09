@@ -1,0 +1,39 @@
+id: "release-notes"
+name: "Release Notes"
+status: "active"
+last_updated: "2026-04-09"
+description: >-
+  Public manifest for the release-notes content type. Consumer repositories can
+  fetch this file first, then resolve the schema, rendering rules, examples,
+  and agent guidance from the referenced paths.
+
+ownership:
+  maintained_by: "Documentation Team"
+  repository_scope: "public .github standards"
+
+entrypoints:
+  schema: ".github/templates/release-notes/release-notes-schema.yaml"
+  rendering: ".github/templates/release-notes/release-notes-rendering.yaml"
+  quick_reference: ".github/templates/release-notes/agent-quick-reference.md"
+  overview: ".github/templates/release-notes/readme.md"
+  skill: ".github/skills/release-notes/SKILL.md"
+  human_rules: ".github/rules/release-notes/release-notes-rules.md"
+
+examples:
+  minimal: ".github/templates/release-notes/examples/minimal-release-notes.yaml"
+  comprehensive: ".github/templates/release-notes/examples/comprehensive-release-notes.yaml"
+
+consumer_usage:
+  workflow:
+    - "Fetch this manifest file from the central repository."
+    - "Resolve the schema and rendering files from the entrypoints section."
+    - "Generate or collect release data in YAML that matches the schema."
+    - "Validate the YAML before rendering Markdown output."
+    - "Optionally use the skill file as the orchestration contract for an agent."
+  remote_reference_strategy:
+    recommended_now: "Use direct raw URLs to these files from main or a pinned commit SHA."
+    recommended_later: "Pin to a release tag such as v1 once multiple content types stabilize."
+  notes:
+    - "The schema is the source of truth for required fields and validation rules."
+    - "The rendering file defines deterministic YAML-to-Markdown behavior."
+    - "The quick reference is optimized for agent prompting and lightweight generation."
