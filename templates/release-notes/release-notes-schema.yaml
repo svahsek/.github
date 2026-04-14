@@ -29,11 +29,11 @@ properties:
     properties:
       version:
         type: "string"
-        pattern: "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
-        description: "Semantic version (X.Y.Z) per https://semver.org"
+        pattern: "^v?(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+        description: "Semantic version (X.Y.Z or vX.Y.Z) per https://semver.org"
         example: "2.1.0"
         validation:
-          - rule: "RULE-002: Must follow semantic versioning"
+          - rule: "STR-002: Must follow semantic versioning; v-prefix is acceptable"
             severity: "ERROR"
 
       releaseDate:
@@ -43,7 +43,7 @@ properties:
         description: "Release date in YYYY-MM-DD format"
         example: "2026-02-16"
         validation:
-          - rule: "RULE-003: Date must be DD Month YYYY format in output"
+          - rule: "STR-003: Date must be DD Month YYYY format in output"
             severity: "ERROR"
             hint: "Schema stores YYYY-MM-DD; converter renders as '16 February 2026' in markdown"
 
@@ -107,7 +107,7 @@ properties:
         description: "One-liner summary of release purpose. Style: Active voice, benefit-driven"
         example: "Self-Service OAuth2 Client Management Reduces Partner Onboarding by 40%"
         validation:
-          - rule: "RULE-008: Must be clear, avoid marketing hype (TGDP clarity standards)"
+          - rule: "PRO-001: Must be clear, avoid marketing hype (TGDP clarity standards)"
             severity: "ERROR"
             reference: "https://github.com/thegooddocsproject/templates"
 
@@ -126,8 +126,7 @@ properties:
               maxLength: 500
               description: "Paragraph content explaining release purpose, themes, and impact"
               validation:
-                - rule: "RULE-008: No superlatives, focus on factual impact"
-                  severity: "ERROR"
+                - rule: "PRO-001: No superlatives, focus on factual impact"
                   reference: "https://docs.microsoft.com/style-guide/word-choice/use-simple-words"
 
             sectionLabel:
@@ -184,7 +183,7 @@ properties:
               description: "1-2 sentence benefit-focused description"
               example: "Partners can now create and manage OAuth2 clients directly through the Admin Portal without manual intervention"
               validation:
-                - rule: "RULE-008: Use clear language, no jargon without definition"
+                - rule: "PRO-001: Use clear language, no jargon without definition"
                   severity: "ERROR"
                   reference: "Microsoft Style Guide - Plain Language"
 
@@ -218,7 +217,7 @@ properties:
                   format: "uri"
                   description: "URL to feature documentation"
               validation:
-                - rule: "RULE-011: All features must have documentation links"
+                - rule: "CON-008: All features must have documentation links"
                   severity: "ERROR"
 
             relatedIssues:
@@ -287,7 +286,7 @@ properties:
               description: "If migration is required, explain what users need to do"
               example: "Update error handling logic to parse new error structure; see migration guide"
               validation:
-                - rule: "RULE-006: Breaking changes must include migration steps"
+                - rule: "CON-005: Breaking changes must include migration steps"
                   severity: "ERROR"
 
             documentation:
@@ -509,7 +508,7 @@ properties:
                       type: "string"
                       format: "uri"
                   validation:
-                    - rule: "RULE-006: Breaking changes require migration guide"
+                    - rule: "CON-005: Breaking changes require migration guide"
                       severity: "ERROR"
 
           deprecatedApis:
@@ -575,7 +574,7 @@ properties:
                   description: "Measurable improvement (must include metric)"
                   example: "40% faster processing time (from 2s to 1.2s average)"
                   validation:
-                    - rule: "RULE-008: Use concrete metrics, not vague terms like 'faster'"
+                    - rule: "IMP-001: Use concrete metrics, not vague terms like 'faster'"
                       severity: "ERROR"
 
                 affectedComponents:
@@ -675,7 +674,7 @@ properties:
                   type: "string"
                   format: "uri"
               validation:
-                - rule: "RULE-006: Must include migration guide for deprecations"
+                - rule: "CON-005: Must include migration guide for deprecations"
                   severity: "ERROR"
 
       # --- Upgrade Instructions ---
@@ -819,39 +818,46 @@ validation:
       usage: "All version values must comply with semver spec"
 
   deterministic_checks:
-    - rule_id: "RULE-001"
+    - rule_id: "STR-001"
       name: "Required Sections"
       check_type: "presence"
       validation: "All required sections must be present with at least one entry"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-002"
+    - rule_id: "STR-002"
       name: "Version Format"
       check_type: "pattern"
-      validation: "Version must match semantic versioning (X.Y.Z)"
+      validation: "Version must match semantic versioning (X.Y.Z or vX.Y.Z)"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-003"
+    - rule_id: "STR-003"
       name: "Date Format"
       check_type: "pattern"
-      validation: "Release date must be in YYYY-MM-DD format internally"
+      validation: "Release date must be in YYYY-MM-DD format internally; rendered as '25th March, 2026'"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-005"
+    - rule_id: "CON-013"
       name: "No Placeholder Text"
       check_type: "content"
       prohibited_patterns:
         - "TBD"
         - "TODO"
         - "FIXME"
+        - "WIP"
         - "[UPDATE THIS]"
+        - "Coming Soon"
       validation: "All placeholder text must be replaced with actual content"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-006"
+    - rule_id: "CON-005"
       name: "Migration Guide for Breaking Changes"
       check_type: "conditional"
       condition: "If migrationRequired == true"
       requirement: "migrationNotes must not be empty"
       validation: "Breaking changes must include migration instructions"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-008"
+    - rule_id: "PRO-001"
       name: "Language & Clarity"
       check_type: "content"
       prohibited:
@@ -860,13 +866,16 @@ validation:
         - "best-in-class"
         - "cutting-edge"
       validation: "Avoid marketing superlatives; use factual language"
+      note: "PRO-001 also enforces this via Vale on rendered Markdown"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-011"
+    - rule_id: "CON-008"
       name: "Documentation Links"
       check_type: "presence"
       validation: "All new features must have documentation links"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
-    - rule_id: "RULE-013"
+    - rule_id: "SEC-001"
       name: "Prohibited Content"
       check_type: "content"
       prohibited:
@@ -875,6 +884,7 @@ validation:
         - "confidential code names"
         - "personal names of individual employees"
       validation: "Remove any internal-only or sensitive information"
+      rules_file: ".github/rules/release-notes/release-notes-rule.yaml"
 
   agent_instructions:
     - |
@@ -882,8 +892,10 @@ validation:
       Step 2: Verify all 'required' fields are populated with non-empty values
       Step 3: Check field types match schema constraints
       Step 4: Run all deterministic checks from validation.deterministic_checks
-      Step 5: If violations found, report by rule ID with fix suggestions
+             (Full rule definitions: .github/rules/release-notes/release-notes-rule.yaml)
+      Step 5: If violations found, report by rule ID (STR-*, CON-*, SEC-*, PRO-*) with fix suggestions
       Step 6: Convert YAML to Markdown using the rendering rules in release-notes-rendering.yaml
+             (Rendering rule IDs: HDR-*, ROL-*, SUM-*, FEA-*, ENH-*, BUG-*, RSEC-*, API-*, IMP-*, ISS-*)
       Step 7: Apply Microsoft Style Guide principles during conversion
       Step 8: Return both YAML (source of truth) and Markdown (rendered output)
 

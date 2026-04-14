@@ -15,6 +15,7 @@ renderingRules:
 # ================================
 sections:
   header:
+    _meta: {prefix: HDR, description: Document header — version, date, product identity}
     template: |
       # Release Notes
       
@@ -24,7 +25,7 @@ sections:
       **Product**: {metadata.productName} ({metadata.productNameAbbr})
     
     rules:
-      - rule_id: "RENDER-001"
+      - rule_id: "HDR-001"
         name: "Header Date Formatting"
         description: "Convert YYYY-MM-DD to readable format 'DD Month YYYY'"
         example: "2026-02-16 → 16 February 2026"
@@ -33,7 +34,7 @@ sections:
             date = parse(isoDate)
             return date.strftime("%d %B %Y")
 
-      - rule_id: "RENDER-002"
+      - rule_id: "HDR-002"
         name: "Metadata Visibility"
         description: "Make release metadata immediately visible"
         style: "Inline bold with → separator for cleanliness"
@@ -42,6 +43,7 @@ sections:
 # SECTION 2: ROLLOUT & AUDIENCE
 # ================================
   rolloutInfo:
+    _meta: {prefix: ROL, description: Rollout timeline and target audience quick reference}
     template: |
       > **📋 Quick Reference**  
       > - **Timeline**: {metadata.rolloutTimeline}
@@ -49,7 +51,7 @@ sections:
     
     condition: "Include only if metadata.rolloutTimeline and metadata.targetAudience are populated"
     rules:
-      - rule_id: "RENDER-003"
+      - rule_id: "ROL-001"
         name: "Quick Reference Block"
         description: "Blockquote format for metadata summaries"
         reasoning: "Helps readers scan WHO should care and WHEN to upgrade"
@@ -59,6 +61,7 @@ sections:
 # SECTION 3: RELEASE SUMMARY
 # ================================
   summary:
+    _meta: {prefix: SUM, description: Release summary — headline, paragraphs, key benefits}
     template: |
       ## Release Summary
       
@@ -70,21 +73,21 @@ sections:
       {formatList(summary.keyBenefits)}
     
     rules:
-      - rule_id: "RENDER-004"
+      - rule_id: "SUM-001"
         name: "Headline as Subheading"
         description: "Use ### (H3) for benefit-driven headline"
         reference: "Microsoft: Action-oriented headlines"
         example: "✓ Self-Service OAuth2 Client Management Reduces Partner Onboarding by 40%"
         example_bad: "✗ OAuth2 Updates in This Release"
 
-      - rule_id: "RENDER-005"
+      - rule_id: "SUM-002"
         name: "Paragraph Formatting"
         description: "Render each paragraph as separate paragraph block"
         implementation: |
           for p in summary.paragraphs:
             render(p.text)  # Plain paragraph, no special formatting
 
-      - rule_id: "RENDER-006"
+      - rule_id: "SUM-003"
         name: "Key Benefits Formatting"
         description: "Bullet list with emoji for emphasis"
         template: |
@@ -98,6 +101,7 @@ sections:
 # SECTION 4: NEW FEATURES
 # ================================
   newFeatures:
+    _meta: {prefix: FEA, description: New features — headings, use cases, capabilities, links}
     template: |
       ## What's New
       
@@ -117,23 +121,23 @@ sections:
       - **Related Issues**: {formatIssueLinks(feature.relatedIssues)}
     
     rules:
-      - rule_id: "RENDER-007"
+      - rule_id: "FEA-001"
         name: "Feature Name as H4"
         description: "Each feature is H4 (####) subheading"
         reasoning: "Creates scannable hierarchy; features are discoverable via TOC"
 
-      - rule_id: "RENDER-008"
+      - rule_id: "FEA-002"
         name: "Use Case First"
         description: "Start with 'Use Case' before capabilities"
         reference: "TGDP: Answer 'Why' before 'How'"
         ordering: "1. Description, 2. Use Case, 3. Capabilities, 4. Links"
 
-      - rule_id: "RENDER-009"
+      - rule_id: "FEA-003"
         name: "Documentation Links Must Be Clickable"
         description: "Use markdown [text](url) format with proper URLs"
         validation: "Verify all URLs are absolute and accessible"
 
-      - rule_id: "RENDER-010"
+      - rule_id: "FEA-004"
         name: "Issue Numbers as Links"
         description: "Convert #1234 to GitHub issue links"
         implementation: |
@@ -144,6 +148,7 @@ sections:
 # SECTION 5: ENHANCED FEATURES
 # ================================
   enhancedFeatures:
+    _meta: {prefix: ENH, description: Enhanced features — before/after tables, migration notes}
     template: |
       ### Enhancements
       
@@ -164,13 +169,13 @@ sections:
       **Documentation**: [{feature.documentation.title}]({feature.documentation.url})
     
     rules:
-      - rule_id: "RENDER-011"
+      - rule_id: "ENH-001"
         name: "Before/After Comparison Table"
         description: "Use markdown table for clarity"
         reasoning: "Tables make before/after changes instantly visible"
         format: "|  |  | format with proper alignment"
 
-      - rule_id: "RENDER-012"
+      - rule_id: "ENH-002"
         name: "Migration Notes Conditional"
         description: "Show migration row only if migrationRequired == true"
         template: |
@@ -182,6 +187,7 @@ sections:
 # SECTION 6: BUG FIXES
 # ================================
   bugFixes:
+    _meta: {prefix: BUG, description: Bug fixes — severity badges, workarounds}
     template: |
       ## Bug Fixes
       
@@ -204,7 +210,7 @@ sections:
       {/if}
     
     rules:
-      - rule_id: "RENDER-013"
+      - rule_id: "BUG-001"
         name: "Severity Badges"
         description: "Use emoji badges for severity"
         mapping:
@@ -213,7 +219,7 @@ sections:
           Medium: "🟡 Medium"
           Low: "🟢 Low"
 
-      - rule_id: "RENDER-014"
+      - rule_id: "BUG-002"
         name: "Include Workarounds"
         description: "If workaround exists, make it prominent"
         rationale: "Users on older versions need immediate workaround"
@@ -222,6 +228,7 @@ sections:
 # SECTION 7: SECURITY UPDATES
 # ================================
   securityUpdates:
+    _meta: {prefix: RSEC, description: Security updates — CVE links, severity, upgrade callouts}
     template: |
       ## ⚠️ Security Updates
       
@@ -246,18 +253,18 @@ sections:
       {/if}
     
     rules:
-      - rule_id: "RENDER-015"
+      - rule_id: "RSEC-001"
         name: "Security Warning Section Header"
         description: "Use ⚠️ emoji and 'IMPORTANT' callout"
         reasoning: "Security updates must be immediately visible"
 
-      - rule_id: "RENDER-016"
+      - rule_id: "RSEC-002"
         name: "CVE Links"
         description: "Link CVE IDs to official CVE database"
         implementation: |
           https://nvd.nist.gov/vuln/detail/{cveid}
 
-      - rule_id: "RENDER-017"
+      - rule_id: "RSEC-003"
         name: "Upgrade Recommendation"
         description: "Explicitly state if immediate upgrade recommended"
         formatting: "Bold for emphasis"
@@ -266,6 +273,7 @@ sections:
 # SECTION 8: API CHANGES
 # ================================
   apiChanges:
+    _meta: {prefix: API, description: API changes — new, modified, deprecated endpoints}
     template: |
       ## API Changes
       
@@ -318,17 +326,17 @@ sections:
       **Migration Guide**: [{title}]({url})
     
     rules:
-      - rule_id: "RENDER-018"
+      - rule_id: "API-001"
         name: "API Endpoint Code Formatting"
         description: "Use backticks for method and path: `GET /api/v2/oauth/clients`"
         format: "`{METHOD} {endpoint}`"
 
-      - rule_id: "RENDER-019"
+      - rule_id: "API-002"
         name: "Deprecation Warning"
         description: "Include '(Deprecated)' label in deprecated API headings"
         styling: "Gray text or strikethrough where supported"
 
-      - rule_id: "RENDER-020"
+      - rule_id: "API-003"
         name: "Parameters as Bullet List"
         description: "List key parameters in bullet format"
         example: |
@@ -340,6 +348,7 @@ sections:
 # SECTION 9: TECHNICAL IMPROVEMENTS
 # ================================
   technicalImprovements:
+    _meta: {prefix: IMP, description: Technical improvements — performance, reliability, infrastructure}
     template: |
       ## Technical Improvements
       
@@ -367,13 +376,13 @@ sections:
       **Affected Components**: {formatList(affectedComponents)}
     
     rules:
-      - rule_id: "RENDER-021"
+      - rule_id: "IMP-001"
         name: "Quantified Metrics Required"
         description: "Always include measurable metrics (%, x, ms, GB, etc.)"
         example: "✓ 40% faster processing (1.2s → 0.7s)"
         example_bad: "✗ Much faster now"
 
-      - rule_id: "RENDER-022"
+      - rule_id: "IMP-002"
         name: "Component Impact List"
         description: "List affected components for transparency"
         reasoning: "Helps users understand scope of changes"
@@ -382,6 +391,7 @@ sections:
 # SECTION 10: KNOWN ISSUES
 # ================================
   knownIssues:
+    _meta: {prefix: ISS, description: Known issues — workarounds, fix versions, tracker links}
     template: |
       ## ⚠️ Known Issues
       

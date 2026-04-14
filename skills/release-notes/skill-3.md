@@ -14,11 +14,19 @@ argument-hint: 'Provide the release version, source inputs, and output target'
 
 ## Canonical Inputs
 
-- Content registry: [../../standards/content-types.yaml](../../standards/content-types.yaml)
-- Release-notes manifest: [../../standards/content-types/release-notes.yaml](../../standards/content-types/release-notes.yaml)
-- Schema: [../../templates/release-notes/release-notes-schema.yaml](../../templates/release-notes/release-notes-schema.yaml)
-- Rendering rules: [../../templates/release-notes/release-notes-rendering.yaml](../../templates/release-notes/release-notes-rendering.yaml)
-- Quick reference: [../../templates/release-notes/agent-quick-reference.md](../../templates/release-notes/agent-quick-reference.md)
+## Canonical Inputs (Remote)
+
+- Manifest:
+https://raw.githubusercontent.com/svahsek/.github/main/standards/content-types/release-notes.yaml
+
+- Schema:
+https://raw.githubusercontent.com/svahsek/.github/main/templates/release-notes/release-notes-schema.yaml
+
+- Rendering rules:
+https://raw.githubusercontent.com/svahsek/.github/main/templates/release-notes/release-notes-rendering.yaml
+
+- Quick reference:
+https://raw.githubusercontent.com/svahsek/.github/main/templates/release-notes/agent-quick-reference.md
 
 ## Repository Inputs and Extraction
 

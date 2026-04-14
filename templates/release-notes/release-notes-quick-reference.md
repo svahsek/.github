@@ -188,19 +188,27 @@ upgradeInstructions:
 ## VALIDATION RULES (Deterministic Checks)
 
 **ERROR (blocks release):**
-- ❌ RULE-001: Missing required sections (version, date, type)
-- ❌ RULE-002: Version doesn't match semantic versioning (X.Y.Z)
-- ❌ RULE-003: Date not in YYYY-MM-DD format
-- ❌ RULE-005: Contains placeholder text (TBD, TODO, FIXME)
-- ❌ RULE-006: Breaking changes without migration steps
-- ❌ RULE-008: Uses marketing superlatives (revolutionary, groundbreaking)
-- ❌ RULE-011: New feature without documentation link
-- ❌ RULE-013: Contains internal info (emails, IPs, confidential code names)
+- ❌ STR-001: Missing required sections (release header or at least one content section)
+- ❌ STR-002: Version does not match semantic versioning (X.Y.Z or vX.Y.Z)
+- ❌ STR-003: Release date not in accepted format (e.g., 25th March, 2026)
+- ❌ CON-001: Missing overview paragraph
+- ❌ CON-005: Breaking change has no migration notes or affected version range
+- ❌ CON-006: Missing compatible modules table
+- ❌ CON-007: Missing repository tags table
+- ❌ CON-008: Missing feature docs or API docs links in documentation section
+- ❌ SEC-001: Contains internal info (team names, personal names, internal URLs without context)
+- ❌ SEC-003: Release name in header does not match productName and version fields
 
 **WARNING (quality issues):**
-- ⚠️ Quantified benefits use vague terms ("faster" instead of "40% faster")
-- ⚠️ Security update without recommended upgrade action
-- ⚠️ Deprecated feature without migration guide
+- ⚠️ CON-002: Bug fix or known issue entry missing issue reference (GitHub #123 or JIRA ID)
+- ⚠️ CON-003: Entry description below 10 words or above 200 characters
+- ⚠️ CON-004: Section header present with no entries
+- ⚠️ CON-009: Non-patch release missing test report link
+- ⚠️ CON-010: Known issues section missing external tracker URL
+- ⚠️ CON-011: Patch release contains new features
+- ⚠️ CON-012: Feature release (Major/Minor) missing user stories table
+- ⚠️ SEC-002: Contains comparative marketing language
+- ⚠️ PRO-001–PRO-003: Prose style violations (applied via Vale on rendered Markdown)
 
 **INFO (nice to have):**
 - ℹ️ Comprehensive issue tracker links
@@ -232,18 +240,21 @@ All text must follow these style guides:
 - Populate relevant `content` subsections
 
 **Step 3: Validate Against Rules**
-- Run RULE-001 to RULE-013 checks
-- Verify no placeholder text
+- Run all STR-* checks: version format, date format, required sections
+- Run all CON-* checks: overview present, issue references, description lengths, compatibility table, repository tags, documentation links, patch scope
+- Run all SEC-* checks: no internal content, release name matches product and version
+- Verify no placeholder text (TBD, TODO, FIXME, WIP)
 - Ensure all URLs are absolute and accessible
-- Check that security updates have workarounds
-- Verify deprecations have migration guides
+- Full rule definitions: `.github/rules/release-notes/release-notes-rule.yaml`
 
 **Step 4: Convert to Markdown**
 - Use `release-notes-rendering.yaml` for rendering rules
-- Apply date formatting (YYYY-MM-DD → DD Month YYYY)
-- Use markdown tables for before/after comparisons
-- Format API endpoints as `METHOD /path`
-- Add emoji badges for severity levels
+- HDR-001: Convert date YYYY-MM-DD → DD Month YYYY format
+- ENH-001: Use markdown tables for before/after comparisons
+- API-001: Format API endpoints as `` `METHOD /path` ``
+- BUG-001 / RSEC-001: Add emoji badges for severity levels (🔴🟠🟡🟢)
+- RSEC-002: Link CVE IDs to https://nvd.nist.gov/vuln/detail/{cveid}
+- IMP-001: Quantified metrics required — use %, x, ms, GB (never vague terms)
 
 **Step 5: Deliver Outputs**
 - YAML file: `release-notes-schema.yaml` (source)
